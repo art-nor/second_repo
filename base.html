@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Your Site{% endblock %}</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            color: #fff;
+            margin: 0;
+            background: linear-gradient(to bottom, #3498db, #2980b9);
+        }
+
+        p {
+            color: #fff;
+        }
+
+        a {
+            padding: 8px 16px;
+            background: linear-gradient(to bottom, #2ecc71, #27ae60);
+            color: #fff;
+            text-decoration: none;
+            border-radius: 6px;
+            margin-top: 10px;
+            display: inline-block;
+            transition: background-color 0.3s ease-in-out;
+        }
+
+        a:hover {
+            background: linear-gradient(to bottom, #219c5f, #1e8449);
+        }
+
+        a:active {
+            background: linear-gradient(to bottom, #1a764b, #16603f);
+        }
+    </style>
+</head>
+<body>
+    {% if user.is_authenticated %}
+        <p>Welcome, {{ user.username }}!</p>
+        <a href="{% url 'login' %}">Logout</a>
+    {% endif %}
+
+    {% block content %}
+    {% endblock %}
+</body>
+</html>
+
+
