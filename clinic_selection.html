@@ -1,0 +1,88 @@
+{% extends 'base.html' %}
+
+{% block title %}Clinic Selection{% endblock %}
+
+{% block content %}
+<style>
+    h1 {
+        color: #fff;
+    }
+
+    form {
+        width: 300px;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+        background: rgba(0, 0, 0, 0.7);
+        text-align: center;
+        margin-top: 20px;
+    }
+
+    form label {
+        margin-bottom: 8px;
+        font-size: 16px;
+        color: #fff;
+    }
+
+    form select {
+        padding: 12px;
+        margin-bottom: 16px;
+        border: 1px solid #3498db;
+        border-radius: 6px;
+        font-size: 16px;
+        color: #555;
+        background-color: #fff; /* Adding a background color for better contrast */
+    }
+
+    form button {
+        padding: 14px;
+        background: linear-gradient(to bottom, #2ecc71, #27ae60);
+        color: #fff;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        font-size: 18px;
+        transition: background-color 0.3s ease-in-out;
+    }
+
+    form button:hover {
+        background: linear-gradient(to bottom, #219c5f, #1e8449);
+    }
+
+    form button:active {
+        background: linear-gradient(to bottom, #1a764b, #16603f);
+    }
+
+    /* Add the style for the "Go to Clinic Options" link */
+    a {
+        padding: 8px 16px;
+        background: linear-gradient(to bottom, #3498db, #2980b9);
+        color: #fff;
+        text-decoration: none;
+        border-radius: 6px;
+        margin-top: 10px;
+        display: inline-block;
+        transition: background-color 0.3s ease-in-out;
+    }
+
+    a:hover {
+        background: linear-gradient(to bottom, #219c5f, #1e8449);
+    }
+
+    a:active {
+        background: linear-gradient(to bottom, #1a764b, #16603f);
+    }
+</style>
+
+<h1>Clinic Selection</h1>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Select Clinic</button>
+</form>
+
+<!-- Display the link only when clinic_id is available -->
+{% if clinic_id %}
+    <a href="{% url 'clinic_options' clinic_id=clinic_id %}">Go to Clinic Options</a>
+{% endif %}
+{% endblock %}

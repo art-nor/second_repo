@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<style>
+    body {
+      font-family: 'Arial', sans-serif;
+      color: #fff;
+      margin: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      background: linear-gradient(to bottom, #3498db, #2980b9);
+    }
+
+    h1 {
+      color: #fff;
+    }
+
+    ul {
+      list-style-type: none;
+      padding: 0;
+      margin: 20px 0;
+    }
+
+    li {
+      margin-bottom: 10px;
+    }
+
+    a {
+      padding: 12px;
+      background: linear-gradient(to bottom, #2ecc71, #27ae60);
+      color: #fff;
+      text-decoration: none;
+      border-radius: 6px;
+      display: inline-block;
+      transition: background-color 0.3s ease-in-out;
+    }
+
+    a:hover {
+      background: linear-gradient(to bottom, #219c5f, #1e8449);
+    }
+
+    a:active {
+      background: linear-gradient(to bottom, #1a764b, #16603f);
+    }
+</style>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ clinic.name }} Options</title>
+</head>
+<body>
+    <h1>Options for {{ clinic.name }}</h1>
+   
+    <ul>
+        <li><a href="{% url 'view_current_appointments' clinic.id %}">View Current Appointments</a></li>
+        <li><a href="{% url 'cancel_reservations' clinic.id %}">Cancel Reservations</a></li>
+        <li><a href="{% url 'increase_availability' clinic.id %}">Increase Availability</a></li>
+    </ul>
+</body>
+</html>
+{% endblock %}
