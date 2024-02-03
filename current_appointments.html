@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block title %}Current Appointments{% endblock %}
+
+{% block content %}
+<style>
+    h1 {
+        color: #fff;
+    }
+
+    ul {
+        list-style-type: none;
+        padding: 0;
+        color: #fff;
+    }
+
+    li {
+        padding: 10px;
+        border-bottom: 1px solid #3498db;
+        font-size: 16px;
+    }
+
+    p {
+        color: #fff;
+    }
+</style>
+
+<h1>Current Appointments</h1>
+{% if appointments %}
+    <ul>
+        {% for appointment in appointments %}
+            <li>{{ appointment.datetime }} - {{ appointment.clinic.name }} - {{ appointment.status }}</li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>No current appointments.</p>
+{% endif %}
+{% endblock %}
